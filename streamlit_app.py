@@ -37,7 +37,8 @@ if st.button("Convert Code"):
                 # If the model gives an error message about invalid code, display it
                 if "error" in validation_response.text.lower():
                     st.error(f"Code Validation Error: {validation_response.text}")
-                    return
+                    # Don't continue to conversion if the code is invalid
+                    st.stop()  # This halts further processing
                 else:
                     st.success("Code syntax looks good!")
 
